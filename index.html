@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Deadline 2026 — Pirates Baseball Operations</title>
+<style>
+  html,body{margin:0;height:100%;background:#fff;font-family:'Archivo',system-ui,Arial,sans-serif}
+  .ld{display:flex;align-items:center;justify-content:center;height:100vh;color:#586068;font-size:14px;letter-spacing:.3px}
+  .dot{width:9px;height:9px;border-radius:50%;background:#ffb627;margin-right:10px;animation:p 1s ease-in-out infinite}
+  @keyframes p{0%,100%{opacity:.25}50%{opacity:1}}
+</style>
+</head>
+<body>
+  <div class="ld" id="ld"><span class="dot"></span>Loading the latest version…</div>
+  <script>
+  (function(){
+    // Unique URL every load => browser + GitHub CDN are both bypassed, always serving the newest dossier.html
+    var url = 'dossier.html?t=' + Date.now();
+    fetch(url, { cache: 'no-store' })
+      .then(function(r){ if(!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+      .then(function(html){ document.open(); document.write(html); document.close(); })
+      .catch(function(e){
+        document.getElementById('ld').textContent =
+          'Could not load the dossier (' + e.message + '). Please try again in a moment.';
+      });
+  })();
+  </script>
+</body>
+</html>
